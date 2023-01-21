@@ -9,6 +9,10 @@ use Illuminate\Pagination\Paginator;
 class RestoController extends Controller
 {
     //
+    function __construct(){
+    //    $this->middleware('auth');
+    }
+
     function index(){
         return view('home');
     }
@@ -25,7 +29,7 @@ class RestoController extends Controller
 
     //When click on Add Restaurant then below function will invoke and redirected to add.blade.php
     function add(){
-        return view('add');
+        return view('list',['results'=>$result]);
     }
 
     //When click on the save then below code will executed.

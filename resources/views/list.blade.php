@@ -6,7 +6,7 @@
     <h3>List all restaurant</h3>
     <br>
     <div class="">
-        <div align="right"><a href="add" class="btn btn-primary">Add Restaurant</a></div>
+        <div align="right"><a href="insert" class="btn btn-primary">Add Restaurant</a></div>
         @if(Session::get('status'))
         <br>
         <div class="alert alert-warning alert-dismissible fade show" role="alert">

@@ -40,7 +40,7 @@
                             <a class="nav-link" href="/list">List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/add">Add</a>
+                            <a class="nav-link" href="/insert">Add</a>
                         </li>
                     </ul>
 

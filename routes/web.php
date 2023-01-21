@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestoController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,19 +23,33 @@ use App\Http\Controllers\RestoController;
 
 Route::get('/',[RestoController::class,'index']);
 //Route::view('home','home');
-Route::get('/list',[RestoController::class,'list']);
-Route::view('add','add');
-Route::post('/add',[RestoController::class,'store']);
 
-Route::get('edit/{id}',[RestoController::class,'edit']);
-Route::post('update',[RestoController::class,'updatedata']);
-Route::get('delete/{id}',[RestoController::class,'delete']);
+// Route::get('add',function(){
+//     if(session()->has('user')){
+//         return redirect('add');
+//     }
+//     return view('auth.login');
+// });
+
+
 
 // End route
 
 
-
+Route::get('/home', [RestoController::class, 'index']);
 
 Auth::routes();
+//User routes
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+    
+    Route::get('/list',[RestoController::class,'list']);
+    Route::view('insert','add');
+    Route::post('/add',[RestoController::class,'store']);
+
+    Route::get('edit/{id}',[RestoController::class,'edit']);
+    Route::post('update',[RestoController::class,'updatedata']);
+    Route::get('delete/{id}',[RestoController::class,'delete']);
+});
+
+
